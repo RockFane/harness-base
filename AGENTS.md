@@ -95,6 +95,8 @@ Run the smallest checks that cover the changed behavior, then expand according t
 
 When one device, account, environment, or tool dependency is blocked, stop only the checks that depend on it. Continue independent in-scope checks and keep the blocked layer explicit; success elsewhere must not erase the blocker.
 
+When a verification channel is degraded — a tool refuses a visual capture, a permission is missing, a service is unreachable — record it as an uncovered item with its unlock condition and ask the user to clear it. Do not silently substitute a weaker channel and report the result as equivalent coverage. A tool error that says "open X before retrying" is a request to relay, not a cue to route around it. Matching rules: the wording of a claim must not exceed what was actually captured (a structural assertion is not visual evidence), and a visual deliverable needs an artifact showing the rendered state.
+
 Stop when the observable outcome and required local verification are complete, or when the next step lacks authorization, credentials, external coordination, or a product decision. The final response must state the result, changed artifacts, verification evidence, Git or external-operation status, and remaining risks or unverified areas.
 
 ## Optional candidate reviews
