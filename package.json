@@ -1,0 +1,35 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.6",
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm dev:web",
+    "dev:web": "pnpm --filter @app/web dev",
+    "dev:server": "pnpm --filter @app/server dev",
+    "dev:full": "concurrently --kill-others --names web,server \"pnpm dev:web\" \"pnpm dev:server\"",
+    "build": "pnpm -r build",
+    "build:web": "pnpm --filter @app/web build",
+    "build:server": "pnpm --filter @app/server build",
+    "start:web": "pnpm --filter @app/web start",
+    "start:server": "pnpm --filter @app/server start",
+    "typecheck": "pnpm --filter @app/contracts build && pnpm -r typecheck",
+    "lint": "eslint scripts/smoke-monorepo.mjs eslint.config.mjs && pnpm -r lint",
+    "test:smoke": "node scripts/smoke-monorepo.mjs",
+    "check": "deliveryguard check",
+    "harness:status": "deliveryguard status"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.5",
+    "concurrently": "10.0.5",
+    "eslint": "9.39.5",
+    "globals": "16.5.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.71.0",
+    "deliveryguard": "0.5.0"
+  }
+}
